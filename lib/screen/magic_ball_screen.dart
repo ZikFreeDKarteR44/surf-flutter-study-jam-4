@@ -1,10 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:surf_practice_magic_ball/consts/colors.dart';
+import 'package:surf_practice_magic_ball/consts/strings.dart';
+import 'package:surf_practice_magic_ball/consts/styles.dart';
+import 'package:surf_practice_magic_ball/widgets/ball_shadow_widget.dart';
+import 'package:surf_practice_magic_ball/widgets/ball_widget.dart';
 
 class MagicBallScreen extends StatelessWidget {
   const MagicBallScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [MainColors.kPurpleColor, MainColors.kPurpleColor, MainColors.kBlackColor],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const BallWidget(),
+              const BallShadowWidget(),
+              const Text(
+                Strings.tapOnBallOrShakePhone,
+                textAlign: TextAlign.center,
+                style: MainStyles.kGreyColorW400,
+              ),
+              const SizedBox(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
