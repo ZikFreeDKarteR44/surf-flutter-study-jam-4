@@ -5,4 +5,5 @@ class Strings {
 
   ///   in MagicBallScreen
   static const String tapOnBallOrShakePhone = "Нажмите на шар или потрясите телефон";
+  static const String tapOnBall = "Нажмите на шар";
 }

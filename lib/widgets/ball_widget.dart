@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sizer/sizer.dart';
 import 'package:surf_practice_magic_ball/api_repositories/data_models/ball_response_model.dart';
 import 'package:surf_practice_magic_ball/bloc/ball_response_cubit/ball_response_cubit.dart';
 import 'package:surf_practice_magic_ball/consts/styles.dart';
@@ -30,16 +31,18 @@ class _BallWidgetState extends State<BallWidget> with TickerProviderStateMixin {
         }
       });
 
-    ShakeDetector detector = ShakeDetector.autoStart(
-      onPhoneShake: () {
-        BlocProvider.of<BallResponseCubit>(context).gettingResponseBall();
-      },
-      minimumShakeCount: 1,
-      shakeSlopTimeMS: 500,
-      shakeCountResetTime: 3000,
-      shakeThresholdGravity: 1.4,
-    );
-    detector.startListening();
+    if (SizerUtil.deviceType == DeviceType.mobile) {
+      ShakeDetector detector = ShakeDetector.autoStart(
+        onPhoneShake: () {
+          BlocProvider.of<BallResponseCubit>(context).gettingResponseBall();
+        },
+        minimumShakeCount: 1,
+        shakeSlopTimeMS: 500,
+        shakeCountResetTime: 3000,
+        shakeThresholdGravity: 1.4,
+      );
+      detector.startListening();
+    }
   }
 
   @override
