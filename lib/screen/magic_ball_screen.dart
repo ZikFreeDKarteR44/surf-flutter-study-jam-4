@@ -22,17 +22,17 @@ class MagicBallScreen extends StatelessWidget {
   Widget widgetForSpecificDevice() {
     Widget mainWidget = const SizedBox();
 
-    if (SizerUtil.deviceType == DeviceType.windows || SizerUtil.deviceType == DeviceType.mac || SizerUtil.deviceType == DeviceType.web || SizerUtil.deviceType == DeviceType.tablet) {
-      mainWidget = const MainWidgetForWeb();
-    } else if (SizerUtil.deviceType == DeviceType.mobile) {
+    if (SizerUtil.deviceType == DeviceType.mobile) {
       mainWidget = const MainWidgetForMobile();
+    } else {
+      mainWidget = const MainWidgetForWebDesktopsTablet();
     }
     return mainWidget;
   }
 }
 
-class MainWidgetForWeb extends StatelessWidget {
-  const MainWidgetForWeb({Key? key}) : super(key: key);
+class MainWidgetForWebDesktopsTablet extends StatelessWidget {
+  const MainWidgetForWebDesktopsTablet({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
