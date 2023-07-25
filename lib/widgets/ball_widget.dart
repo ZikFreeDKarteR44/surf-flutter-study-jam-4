@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:surf_practice_magic_ball/consts/colors.dart';
 import 'package:surf_practice_magic_ball/consts/styles.dart';
 
 class BallWidget extends StatefulWidget {
